@@ -216,3 +216,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Python
+*.pyc
+
+# dbt
+  dbt_packages/
+  target/
+
+  # Logs
+  logs/
