@@ -20,3 +20,5 @@ models:
       - name: company_count
         tests:
           - not_null
+      - name: is_corporate_officer
+        description: "True if this 'officer' is a corporate entity (a company acting as director/secretary) rather than an individual — identified by missing date of birth."
