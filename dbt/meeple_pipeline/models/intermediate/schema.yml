@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: int_company_officers
+    description: "One row per company-officer relationship, joining companies and officers."
+    columns:
+      - name: company_number
+        tests:
+          - not_null
+      - name: officer_name
+        tests:
+          - not_null
+
+  - name: int_officer_appointment_counts
+    description: "Aggregated count of current company appointments per officer (approximate identity matching — see model comments)."
+    columns:
+      - name: officer_name
+        tests:
+          - not_null
+      - name: company_count
+        tests:
+          - not_null
