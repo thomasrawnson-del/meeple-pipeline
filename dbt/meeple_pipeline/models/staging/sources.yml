@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw
+    database: meeple_pipeline
+    schema: dev_boardgame
+    tables:
+      - name: raw_company_profiles
+      - name: raw_officers
+      - name: raw_filing_history
