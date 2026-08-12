@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: stg_companies
+    description: "One row per company, flattened from raw Companies House profile data."
+    columns:
+      - name: company_number
+        description: "Unique Companies House company registration number."
+        tests:
+          - not_null
+          - unique
+      - name: company_name
+        description: "Registered company name."
+        tests:
+          - not_null
+      - name: company_status
+        description: "Current status (e.g. active, dissolved)."
+
+  - name: stg_officers
+    description: "One row per company-officer appointment, flattened from raw officers data."
+    columns:
+      - name: company_number
+        description: "Companies House company number this officer is/was appointed to."
+        tests:
+          - not_null
+      - name: officer_name
+        description: "Full name of the officer as registered."
+        tests:
+          - not_null
+      - name: officer_role
+        description: "Role held (e.g. director, secretary)."
+
+  - name: stg_filing_history
+    description: "One row per filing event, flattened from raw filing history data."
+    columns:
+      - name: company_number
+        description: "Companies House company number the filing relates to."
+        tests:
+          - not_null
+      - name: filing_type
+        description: "Type/category code of the filing."
+      - name: filing_date
+        description: "Date the filing was made."
