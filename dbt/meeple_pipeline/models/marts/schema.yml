@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: mart_companies_overview
+    description: "One row per board game company, with type classification, status, and current officer count. Primary company-level reference table."
+    columns:
+      - name: company_number
+        description: "Companies House registration number."
+        tests:
+          - not_null
+          - unique
+      - name: company_name
+        description: "Registered company name."
+      - name: company_status
+        description: "Current status (e.g. active, dissolved)."
+      - name: company_type
+        description: "Classified as manufacturer, wholesaler, retailer, or other, based on SIC code."
+      - name: incorporation_year
+        description: "Year the company was incorporated."
+      - name: current_officer_count
+        description: "Number of currently appointed officers (directors/secretaries)."
+
+  - name: mart_multi_board_directors
+    description: "Individuals (excluding corporate officers) currently appointed to 2 or more board game companies."
+    columns:
+      - name: officer_name
+        description: "Officer's registered name."
+        tests:
+          - not_null
+      - name: company_count
+        description: "Number of board game companies this individual currently sits on the board of."
+        tests:
+          - not_null
+
+  - name: mart_industry_trends
+    description: "Company incorporations by year and type, for tracking sector growth/decline."
+    columns:
+      - name: incorporation_year
+        description: "Calendar year of incorporation."
+      - name: company_type
+        description: "Manufacturer, wholesaler, retailer, or other."
+      - name: companies_incorporated
+        description: "Count of companies incorporated in that year and type."
