@@ -22,3 +22,21 @@ models:
           - not_null
       - name: is_corporate_officer
         description: "True if this 'officer' is a corporate entity (a company acting as director/secretary) rather than an individual — identified by missing date of birth."
+
+  - name: int_filing_timeline
+    description: "Filing history joined to company details, with year/quarter breakdowns for trend analysis."
+    columns:
+      - name: company_number
+        tests:
+          - not_null
+
+  - name: int_company_incorporations
+    description: "Companies classified by type (manufacturer/wholesaler/retailer) based on SIC code, with incorporation year extracted."
+    columns:
+      - name: company_number
+        tests:
+          - not_null
+          - unique
+      - name: company_type
+        tests:
+          - not_null
