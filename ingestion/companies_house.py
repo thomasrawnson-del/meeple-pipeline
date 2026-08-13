@@ -14,8 +14,6 @@ load_dotenv()
 
 
 API_KEY = os.getenv("COMPANIES_HOUSE_API_KEY")
-print("API Key Loaded:", API_KEY is not None)
-print("API Key value:", repr(API_KEY))
 BASE_URL = "https://api.company-information.service.gov.uk"
 BUCKET = os.getenv("S3_BUCKET_NAME")
 
